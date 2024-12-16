@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuban Missile Crisis</title>
+  <link rel="icon" href="Images/Icon.png" type="image/png">
+  <style>
+    /* Animated Border Around the Entire Site */
+body {
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border: 10px solid transparent;
+  box-sizing: border-box;
+  animation: cuban-crisis-border 5s infinite;
+}
+
+@keyframes cuban-crisis-border {
+  0% {
+    border-color: #dc3545; /* Red */
+  }
+  33% {
+    border-color: #ffc107; /* Yellow */
+  }
+  66% {
+    border-color: #6c757d; /* Gray */
+  }
+  100% {
+    border-color: #dc3545; /* Back to Red */
+  }
+}
+
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+    header {
+      background: linear-gradient(90deg, #dc3545, #6c757d);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      border-bottom: 5px solid #ffc107;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    /* Sections */
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(to bottom, #ffffff, #f1f1f1);
+      border: 1px solid #ced4da;
+    }
+    .section h2 {
+      font-size: 1.8rem;
+      color: #495057;
+      margin-bottom: 15px;
+      border-left: 4px solid #007bff;
+      padding-left: 10px;
+    }
+    /* Rotator */
+    .rotator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    .rotator img {
+      max-width: 150px;
+      border-radius: 5px;
+      border: 2px solid #ced4da;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .rotator img:hover {
+      transform: scale(1.1);
+    }
+    .rotator-content {
+      text-align: center;
+    }
+    .arrow {
+      cursor: pointer;
+      font-size: 2rem;
+      user-select: none;
+      color: #6c757d;
+      transition: color 0.3s ease;
+    }
+    .arrow:hover {
+      color: #dc3545;
+    }
+    /* Impact Section */
+    .impact {
+      padding: 20px;
+      border-radius: 5px;
+      background: #fff;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .impact p {
+      margin: 10px 0;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    /* Facts */
+    .facts {
+      list-style: none;
+      padding: 0;
+    }
+    .facts li {
+      background: #e9ecef;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    /* Images */
+    .pictures {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+    .pictures figure {
+      flex: 1 1 calc(50% - 20px);
+      margin: 0;
+      text-align: center;
+      cursor: pointer;
+    }
+    .pictures img {
+      max-width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    .pictures img:hover {
+      transform: scale(1.05);
+    }
+    .pictures figcaption {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #495057;
+    }
+    /* Modal for Enlarged Images */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 5px;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.6);
+    }
+    .modal .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .modal .close:hover {
+      color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Cuban Missile Crisis</h1>
+    <p>1962 - A Tense Turning Point in the Cold War</p>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Historical Figures -->
+    <div class="section">
+      <h2>Major Historical Figures</h2>
+      <div class="rotator">
+        <span class="arrow" id="prev-figure">&#9664;</span>
+        <div class="rotator-content">
+          <img src="https://via.placeholder.com/150" alt="Historical Figure" id="figure-img">
+          <p id="figure-name"><strong>John F. Kennedy</strong></p>
+          <p id="figure-desc">The U.S. President during the Cuban Missile Crisis who navigated the tense negotiations.</p>
+        </div>
+        <span class="arrow" id="next-figure">&#9654;</span>
+      </div>
+    </div>
+
+    <!-- Countries -->
+    <div class="section">
+      <h2>Countries Involved</h2>
+      <div class="rotator">
+        <span class="arrow" id="prev-country">&#9664;</span>
+        <div class="rotator-content">
+          <img src="https://via.placeholder.com/150" alt="Country Flag" id="country-flag">
+          <p id="country-name"><strong>United States</strong></p>
+          <p id="country-role">The U.S. opposed Soviet missile installations in Cuba, initiating the crisis.</p>
+        </div>
+        <span class="arrow" id="next-country">&#9654;</span>
+      </div>
+    </div>
+
+    <!-- Impact Section -->
+    <div class="section impact">
+      <h2>Impact on American History</h2>
+      <p>The Cuban Missile Crisis marked a turning point in Cold War diplomacy, fostering cautious communication between nuclear powers.</p>
+      <p>It led to the establishment of the Moscow-Washington hotline for direct communication.</p>
+      <p>The crisis highlighted the importance of strategic restraint in a nuclear world.</p>
+    </div>
+
+    <!-- Facts Section -->
+    <div class="section">
+      <h2>Interesting Facts</h2>
+      <ul class="facts">
+        <li>A secret deal to remove U.S. Jupiter missiles from Turkey helped end the Cuban Missile Crisis but was kept hidden for years.</li>
+        <li>Soviet submarines near Cuba were armed with nuclear torpedoes, and one came close to firing due to miscommunication and intense pressure.</li>
+        <li>The U.S. military accidentally raised its DEFCON level without authorization, further escalating tensions during the crisis.</li>
+        <li>Fidel Castro urged Khrushchev to launch a nuclear strike on the U.S. if Cuba were invaded, demonstrating his willingness to risk global destruction.</li>
+        <li>An American U-2 pilot accidentally strayed into Soviet airspace during the crisis, almost triggering a direct confrontation.</li>
+      </ul>
+    </div>
+
+    <!-- Images -->
+    <div class="section">
+      <h2>Images of the Crisis</h2>
+      <div class="pictures">
+        <figure>
+          <img src="Images/Discovered Missles.png" alt="Missile Installation" class="clickable-image">
+          <figcaption>Soviet missile sites in Cuba, revealed by U-2 reconnaissance.</figcaption>
+        </figure>
+        <figure>
+          <img src="Images/JFK.png" alt="Kennedy Address" class="clickable-image">
+          <figcaption>President Kennedy addressing the nation about the crisis.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Enlarged Image -->
+  <div class="modal" id="image-modal">
+    <span class="close" id="close-modal">&times;</span>
+    <img src="" alt="Enlarged" id="modal-image">
+  </div>
+
+  <script>
+    // Rotator Data
+    const figures = [
+      { name: "John F. Kennedy", desc: "As U.S. President, Kennedy led the American response to the Soviet missiles in Cuba, implementing a naval blockade and negotiating to avoid nuclear war.", img: "Images/JFK Pot.png" },
+      { name: "Fidel Castro", desc: "As Cuba's leader, Castro welcomed Soviet missiles to deter U.S. invasion but pushed for a stronger Soviet stance, even risking nuclear escalation.", img: "Images/Fidel Castro.png" },
+      { name: "Nikita Khrushchev", desc: "As Soviet Premier, Khrushchev orchestrated the deployment of missiles to Cuba and ultimately negotiated their removal to avoid nuclear conflict.", img: "Images/Krushev.png" }
+    ];
+    let figureIndex = 0;
+
+    const countries = [
+      { name: "United States", role: "The U.S. imposed a naval blockade around Cuba, demanded the removal of Soviet missiles, and negotiated to avoid war while secretly agreeing to remove missiles from Turkey.", img: "Images/US FLAG.png" },
+      { name: "Soviet Union", role: "The USSR deployed nuclear missiles to Cuba to counter U.S. missiles in Europe and bolster its ally, later negotiating their withdrawal to prevent global nuclear war.", img: "Images/USSR FLAG.png" },
+      { name: "Cuba", role: "Cuba, under Fidel Castro, hosted Soviet missiles to deter a U.S. invasion, supported the USSR, and prepared for potential conflict during the tense standoff.", img: "Images/CUBA FLAG.png" }
+    ];
+    let countryIndex = 0;
+
+    const updateFigure = () => {
+      document.getElementById("figure-name").textContent = figures[figureIndex].name;
+      document.getElementById("figure-desc").textContent = figures[figureIndex].desc;
+      document.getElementById("figure-img").src = figures[figureIndex].img;
+    };
+
+    const updateCountry = () => {
+      document.getElementById("country-name").textContent = countries[countryIndex].name;
+      document.getElementById("country-role").textContent = countries[countryIndex].role;
+      document.getElementById("country-flag").src = countries[countryIndex].img;
+    };
+
+    document.getElementById("prev-figure").onclick = () => {
+      figureIndex = (figureIndex - 1 + figures.length) % figures.length;
+      updateFigure();
+    };
+    document.getElementById("next-figure").onclick = () => {
+      figureIndex = (figureIndex + 1) % figures.length;
+      updateFigure();
+    };
+    document.getElementById("prev-country").onclick = () => {
+      countryIndex = (countryIndex - 1 + countries.length) % countries.length;
+      updateCountry();
+    };
+    document.getElementById("next-country").onclick = () => {
+      countryIndex = (countryIndex + 1) % countries.length;
+      updateCountry();
+    };
+
+    updateFigure();
+    updateCountry();
+
+    // Modal Functionality
+    const modal = document.getElementById("image-modal");
+    const modalImg = document.getElementById("modal-image");
+    const closeModal = document.getElementById("close-modal");
+
+    document.querySelectorAll(".clickable-image").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
+    });
+
+    closeModal.onclick = () => {
+      modal.style.display = "none";
+    };
+  </script>
+</body>
+</html>
